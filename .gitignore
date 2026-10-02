@@ -1,0 +1,16 @@
+# 依赖与构建产物
+node_modules/
+dist/
+*.tsbuildinfo
+coverage/
+
+# 上游的临时签出（G1）。里面可能有没写许可的内容，永远不进仓库（CLAUDE.md H1）
+.work/
+
+# 签名相关的一切（CLAUDE.md H2）。私钥本来就不该出现在这台机器的这个目录里，这一行只是兜底
+*.pem
+*.key
+*.p8
+
+# 系统文件
+.DS_Store
