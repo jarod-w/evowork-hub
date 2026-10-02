@@ -4,7 +4,7 @@ EvoWork 插件 Hub 的**源头仓库**：上游清单、筛选管道、我们托
 
 设计的唯一真源是 evowork 仓库的 [13 · 插件 Hub](https://github.com/jarod-w/evowork/blob/ui_based_codex/docs/design/13-plugin-hub.md)。本仓库不重复它，只写「在这里怎么做」。
 
-> **状态**：只有骨架。管道（G1–G7）与内容都还没有开始做。
+> **状态**：管道 G1–G4 与 G7 的打包 / 离线签名工具已实现（见 [`pipeline/`](pipeline/)）；G5 / G6、上传与 CDN、首批内容还没有。`sources.yaml` 还是空的。
 
 ---
 

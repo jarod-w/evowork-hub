@@ -1,0 +1,8 @@
+# 没写许可的条目（evowork 13 HUB-Q5a=A）：**只做索引、不托管不改写**。
+#
+# 内容永远不进本仓库（CLAUDE.md H1）。这里只登记索引条目本身：上游地址、固定提交、子目录、
+# 按那个提交算好的文件树哈希（`packages/hub-protocol` 的 treeSha256），以及我们自己写的中文简介。
+# `pipeline/publish.ts` 原样并进 payload；用户点安装时客户端直接去上游取，并按树哈希校验。
+#
+# 条目格式即 13 §4.1 的 item，`package` 写 { url, subdir, treeSha256 }，`license.spdx` 写 NOASSERTION。
+items: []

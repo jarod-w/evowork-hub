@@ -9,6 +9,21 @@ content/
   connectors/<id>/    connector.json（与 evowork connectors.json 的条目同构）；stdio 类另带 server 源码（H6）
 ```
 
+每个条目目录里有一份 **`hub.json`**（不打进内容包），`pipeline/publish.ts` 读它生成索引条目：
+
+```json
+{
+  "version": "1.0.0",
+  "minAppVersion": "0.0.5",
+  "promptVisible": true,
+  "interface": { "displayName": "会议纪要", "description": "…", "category": "办公" },
+  "license": { "spdx": "MIT", "upstream": "github.com/<org>/<repo>", "commit": "<sha>", "modified": true },
+  "transport": "http"
+}
+```
+
+`transport` 只有连接器要写。审计结论（`audit`）由 publish 现算，不手写。
+
 从上游收编的条目，目录里还必须有：
 
 | 文件 | 内容 |
