@@ -13,7 +13,8 @@
     "pipeline": "tsx pipeline/run.ts",
     "test": "vitest run",
     "typecheck": "tsc -p tsconfig.json",
-    "check": "tsc -p tsconfig.json && vitest run"
+    "check": "tsc -p tsconfig.json && vitest run",
+    "release": "tsx pipeline/release.ts"
   },
   "devDependencies": {
     "@types/node": "^22.19.0",

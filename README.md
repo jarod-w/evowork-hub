@@ -4,7 +4,7 @@ EvoWork 插件 Hub 的**源头仓库**：上游清单、筛选管道、我们托
 
 设计的唯一真源是 evowork 仓库的 [13 · 插件 Hub](https://github.com/jarod-w/evowork/blob/ui_based_codex/docs/design/13-plugin-hub.md)。本仓库不重复它，只写「在这里怎么做」。
 
-> **状态**：管道 G1–G4 与 G7 的打包 / 离线签名工具已实现（见 [`pipeline/`](pipeline/)）；G5 / G6、上传与 CDN、首批内容还没有。`sources.yaml` 还是空的。
+> **状态**：管道 G1–G4 与发布（G7）已实现，官方源 **`https://hub.nucleant.cn:9443` 已上线**（2026-10-03，目前是空索引）。G5 / G6 与首批内容还没有，`sources.yaml` 还是空的。
 
 ---
 
@@ -13,7 +13,7 @@ EvoWork 插件 Hub 的**源头仓库**：上游清单、筛选管道、我们托
 没有 Web 界面，就是一个静态目录，和 apt / rpm 仓库同一类：签过名的元数据 + 一堆包。
 
 ```
-<cdn>/v1/<sourceId>/index.json                         签名信封（13 §4.1）
+<cdn>/v1/<sourceId>/index.json                         签名信封（13 §4.1）；离线包用的长有效期版本是 index.offline.json
 <cdn>/v1/<sourceId>/pkgs/<kind>/<id>/<version>.tar.gz  内容包（13 §4.2），sha256 写在索引里
 ```
 

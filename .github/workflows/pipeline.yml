@@ -1,0 +1,69 @@
+# 管道 CI（evowork 13 §7 / §4.3）。
+#
+# 只做三件事：类型 + 测试、跑管道（G1–G4）、打出**未签名**的内容包与 payload 当作 artifact。
+# **这里永远不碰签名私钥**（CLAUDE.md H2）：本仓库是公开的，CI 的 secrets 也不是放私钥的地方。
+# 签名与上传在发版机上：`pnpm release`（见 pipeline/README.md）。
+name: pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # 审计规则与索引协议从 evowork 的源码引用（H4），提交钉在 evowork.lock
+      - name: Read pinned evowork commit
+        id: pin
+        run: echo "commit=$(sed -n 's/^commit=//p' evowork.lock)" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@v4
+        with:
+          repository: jarod-w/evowork
+          ref: ${{ steps.pin.outputs.commit }}
+          path: evowork-src
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.30.3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install evowork (for the shared packages)
+        working-directory: evowork-src
+        env:
+          ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+          npm_config_registry: https://registry.npmjs.org
+        run: pnpm install --frozen-lockfile
+
+      - name: Install
+        env:
+          npm_config_registry: https://registry.npmjs.org
+        run: pnpm install --frozen-lockfile
+
+      - name: Typecheck and tests
+        env:
+          EVOWORK_DIR: ${{ github.workspace }}/evowork-src
+        run: pnpm check
+
+      - name: Unsigned build for review
+        env:
+          EVOWORK_DIR: ${{ github.workspace }}/evowork-src
+        # 序号在发版机上按线上的 +1 重新算；这里的 0 号产物只给评审看内容包长什么样
+        run: pnpm tsx pipeline/publish.ts --sequence 1
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hub-unsigned
+          path: |
+            dist/payload.online.json
+            dist/payload.offline.json
+            dist/v1/evowork/pkgs/
+          if-no-files-found: warn

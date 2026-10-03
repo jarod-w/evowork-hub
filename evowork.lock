@@ -1,4 +1,4 @@
 # 本仓库引用的 evowork 提交（CLAUDE.md H4：审计规则与索引协议只有一份，在 evowork 里）。
 # 管道启动时核对 EVOWORK_DIR 的 HEAD 是不是这个提交；CI（--ci）对不上直接失败，本机只警告。
 # 改 evowork 的审计规则之后，把这里升到新的提交、重跑整条管道。
-commit=0d8a4041444fedb00ebfecf3f95345d0cf5a06a8
+commit=a265b7b68e005a620a2f5db8b42b7516bcb179bf
