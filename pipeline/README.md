@@ -11,7 +11,7 @@
 | G4 兼容 | `gates.ts` `gateCompat`：HF9 长度、宿主专有写法、Python import 能否由办公运行时满足、运行时装 npm 包、引用技能目录外的插件代码 | ✅ |
 | G5 试跑 | — | ⏳ H4 |
 | G6 改写 | — | ⏳ H4 |
-| G7 签名发布 | `publish.ts`（打包 + 未签名 payload）· `sign.ts`（签名）· `release.ts`（发版机上的一条命令）· `s3put.ts`（SigV4 PUT） | ✅ 2026-10-03 已上线 `https://hub.nucleant.cn:9443`（evowork build-and-deploy §5.3.2） |
+| G7 签名发布 | `publish.ts`（打包 + 未签名 payload）· `sign.ts`（签名）· `release.ts`（发版机上的一条命令）· `s3put.ts`（SigV4 PUT） | ✅ 2026-10-03 已上线；2026-10-07 起是 `https://hub.nucleant.cn`（evowork build-and-deploy §5.3.2） |
 
 ```bash
 pnpm install

@@ -10,8 +10,8 @@
  *
  * | 参数 | 默认 | 说明 |
  * | --- | --- | --- |
- * | `--origin` | `https://hub.nucleant.cn:9443` | 线上地址（取当前序号、发布后验证） |
- * | `--ssh` | `root@115.190.115.161` | 服务器；上传走 ssh 隧道直连它本机的 MinIO（127.0.0.1:9000） |
+ * | `--origin` | `https://hub.nucleant.cn` | 线上地址（取当前序号、发布后验证） |
+ * | `--ssh` | `root@43.143.248.70` | 服务器；上传走 ssh 隧道直连它本机的 MinIO（127.0.0.1:9000） |
  * | `--key` / `--kid` | `~/.evowork-hub-keys/evowork-hub-1.pem` / `evowork-hub-1` | 日常签名私钥（**仓库之外**，H2） |
  * | `--creds` | `~/.evowork-hub-keys/minio-publisher.env` | `hub-publisher` 账号（只有 hub 桶的读写权） |
  *
@@ -41,8 +41,8 @@ import { putObject, type S3Target } from "./s3put.ts";
 import { signPayload } from "./sign.ts";
 
 const DEFAULTS = {
-  origin: "https://hub.nucleant.cn:9443",
-  ssh: "root@115.190.115.161",
+  origin: "https://hub.nucleant.cn",
+  ssh: "root@43.143.248.70",
   key: join(homedir(), ".evowork-hub-keys", "evowork-hub-1.pem"),
   kid: "evowork-hub-1",
   creds: join(homedir(), ".evowork-hub-keys", "minio-publisher.env"),
