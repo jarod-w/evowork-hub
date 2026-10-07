@@ -28,6 +28,11 @@ jobs:
           repository: jarod-w/evowork
           ref: ${{ steps.pin.outputs.commit }}
           path: evowork-src
+      # 类型与测试按相对路径引用 evowork 源码（`../evowork/...`，本机两个仓库是同级目录）；
+      # actions/checkout 只能签出到工作区里面，所以在同级位置放一个指向它的链接，让 CI 的布局和本机一样。
+      # 少了它，tsc 报「Cannot find module '../../evowork/...'」，连带 publish.ts 推不出类型
+      - name: Link evowork next to this repository
+        run: ln -sfn "$GITHUB_WORKSPACE/evowork-src" "$GITHUB_WORKSPACE/../evowork"
 
       - uses: pnpm/action-setup@v4
         with:
