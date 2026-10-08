@@ -14,7 +14,16 @@
 #
 # 首批候选见 13 §7.2。下面是格式示例，全部注释掉；落到实处时逐个核对许可与提交，再取消注释。
 
-sources: []
+sources:
+  - id: open-kimi-ppt
+    repo: https://github.com/acnlie/open-kimi-ppt-skill
+    commit: c32890fe0985bdf668f2722fed30f1010bdf24c9
+    include: ["skills/open-kimi-ppt/**"]
+    kinds: [skill]
+    note: >-
+      用户指定的演示文稿技能，仓库级 MIT。上游原版 G4 缺 yaml、websocket，且运行时自动安装工具。
+      content/skills/open-kimi-ppt 是适配后的托管版本：依赖随包、办公组件本地转 PPTX、专用浏览器仅做图片校验。
+      已过 G2–G4、禁用用户包测试、本地 PPTX/原生元素回读和真实 Chrome 图片导出；高级能力限制见适配说明。
 
 # - id: anthropics-skills
 #   repo: https://github.com/anthropics/skills

@@ -4,7 +4,7 @@ EvoWork 插件 Hub 的**源头仓库**：上游清单、筛选管道、我们托
 
 设计的唯一真源是 evowork 仓库的 [13 · 插件 Hub](https://github.com/jarod-w/evowork/blob/ui_based_codex/docs/design/13-plugin-hub.md)。本仓库不重复它，只写「在这里怎么做」。
 
-> **状态**：管道 G1–G4 与发布（G7）已实现，官方源 **`https://hub.nucleant.cn`**（2026-10-03 以 `:9443` 上线；2026-10-07 迁到新服务器、改用默认端口，**桶是空的，还没在新服务器上发布**）。G5 / G6 与首批内容还没有，`sources.yaml` 还是空的。
+> **状态**：管道 G1–G4 与发布（G7）已实现，官方源 **`https://hub.nucleant.cn`**。2026-10-08 在新服务器发布序号 **1**，首个条目是 **Kimi 演示文稿**（`open-kimi-ppt` / `1.2.0-evowork.1`）。已从线上取回验签并验证包哈希与客户端解包；本条目的 G5 试跑、G6 适配已手工完成，通用 G5 / G6 管道仍未实现。详见 [发布验收记录](pipeline/verification-open-kimi-ppt.md)。
 
 ---
 

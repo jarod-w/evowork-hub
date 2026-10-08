@@ -1,0 +1,16 @@
+{
+  "version": "1.2.0-evowork.2",
+  "minAppVersion": "0.0.6",
+  "promptVisible": true,
+  "interface": {
+    "displayName": "Kimi 演示文稿",
+    "description": "自由排版创建和编辑演示文稿，本机导出可编辑 PPTX；图片校验可选联网。",
+    "category": "办公"
+  },
+  "license": {
+    "spdx": "MIT AND Apache-2.0",
+    "upstream": "https://github.com/acnlie/open-kimi-ppt-skill",
+    "commit": "c32890fe0985bdf668f2722fed30f1010bdf24c9",
+    "modified": true
+  }
+}

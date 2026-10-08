@@ -1,0 +1,8 @@
+{
+  "displayName": "Kimi 演示文稿",
+  "description": "自由排版创建和编辑演示文稿，本机导出可编辑 PPTX；图片校验可选联网。",
+  "category": "办公",
+  "runtimeDependencies": [
+    "office"
+  ]
+}
