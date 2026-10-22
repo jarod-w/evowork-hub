@@ -27,7 +27,7 @@ The .pptd format is a simplified abstraction layer over OOXML that follows basic
 - Python 依赖 PyYAML、websocket-client 已随插件打包；不需要 Node.js、npm 或命令行浏览器工具。
 - 图片校验使用 EvoWork 的办公组件，脚本会自动选择其 Python。缺少时请用户在 EvoWork 设置中安装或修复办公组件，不要自行安装包。
 - 本地 PPTX 导出不需要浏览器。图片校验缺少 Chrome、Chromium 或 Edge 时明确提示安装；客户要求离线时继续本地导出，并说明跳过了图片校验。不要改用用户的浏览器登录会话。
-- PPTX 转换不联网。只有图片校验需要加载 `www.kimi.com`、`statics.moonshot.cn`、`statics.kimi.ai` 的编辑器静态资源；先向用户说明这个要求。专用会话禁止上传、遥测和任意资源地址。
+- PPTX 转换不联网。**默认不做在线图片校验**：导出 PPTX 后用 EvoWork 的离线版式检查（见 step4）。只有用户**在对话里明确同意**加载 `www.kimi.com`、`statics.moonshot.cn`、`statics.kimi.ai` 的编辑器静态资源时才做在线图片校验 —— 先说明要联网、连哪些域名、为什么，等用户回答；联网审批卡不能代替这一步询问。专用会话禁止上传、遥测和任意资源地址。
 - 媒体请先下载到项目 `media/`，再使用相对路径；导出器只加载编辑器静态资源，不访问任意远程图片或字体地址。
 - 这是非官方兼容实现，在线编辑器更新可能造成图片校验失败。遇到不支持的 PPTD 特性或校验错误如实报告并保留完整项目，不临时安装软件或换通道绕过失败。
 
@@ -128,17 +128,24 @@ When generating a PPT, adopt different production approaches for different user 
 
 ### step4. PPT validation
 1. Validate the generated pptd against the format definition in `reference/pptd.md` (required fields, types, bounds, theme tokens, resource paths, etc.) and repair issues over multiple rounds
-2. Visual review with exported page images — use when the model supports image input and the customer permits online editor resources. For offline tasks, perform structural QA and explicitly state that visual QA was skipped:
-   - Run `scripts/export_images.py`. It loads the deck into Kimi's public editor, chooses 导出 → 图片, downloads the images ZIP, unzips it, and stitches all pages into one overview image:
+2. **Offline layout check (default, no network).** Export the PPTX with `scripts/export_pptx.py` (step5 item 4), then run EvoWork's layout checker on it:
+
+     ```bash
+     "<办公Python>" "<EvoWork 随包技能目录>/_shared/layout_check.py" /abs/path/project/deck.pptx
+     ```
+
+   `<EvoWork 随包技能目录>` is the directory that holds EvoWork's bundled `presentations/` skill (take it from that skill's path in the skill list) — `_shared/` sits next to it. Fix every item in `warnings` (text overflow, glyphs the font does not have, shapes off the slide, tables taller than the slide) in the corresponding `.page`, re-export, and re-check until `warnings` is empty. `notes` are informational (for example a font not installed on this machine). If the checker does not exist (an older EvoWork), do the structural review in item 4 and say that the layout check was unavailable.
+3. **Online image review (optional, only after the user agrees in the conversation)** — only when the model can read images. Ask first and name the domains; a network approval card is not consent. If the user agrees:
+   - Run `scripts/export_images.py`. It loads the deck into Kimi's public editor, chooses 导出 → 图片, downloads the images ZIP, unzips it, and stitches all pages into one overview image. Write the images to this task's temporary directory, not into the project:
 
      ```bash
      "<办公Python>" "<技能目录>/scripts/export_images.py" \
        /abs/path/project/deck.pptd \
-       --output /abs/path/project/.qa-images
+       --output "<临时目录>/qa-images"
      ```
 
      The script prints a JSON summary mapping each stitched label (`P1`…`Pn`, 1-based page order) to its `.page` file.
-   - Read the stitched overview image (`.qa-images/overview.jpg`) and check every page against this list:
+   - Read the stitched overview image (`<临时目录>/qa-images/overview.jpg`) and check every page against this list:
      1. 图片是否清晰、不变形（无拉伸、压缩、模糊）
      2. 文字是否压在关键画面（人脸、产品主体、Logo 等）上
      3. 元素坐标是否超出页面边界
@@ -146,10 +153,10 @@ When generating a PPT, adopt different production approaches for different user 
      5. 排版是否统一（对齐、间距、字号层级、页边距）
      6. 文字是否可能溢出文本框（文本过长、行距过密、字号过大）
      7. 内容是否被上层元素遮挡
-   - For any suspicious page, read its full-resolution image (`.qa-images/pages/<n>.jpeg`) to confirm the problem before editing.
+   - For any suspicious page, read its full-resolution image (`<临时目录>/qa-images/pages/<n>.jpeg`) to confirm the problem before editing.
    - Fix issues in the corresponding `.page` file, then re-run `scripts/export_images.py --force` and review the new overview; repeat until every page passes.
-   - Do not export the PPTX until the visual review passes. `.qa-images/` is an intermediate QA artifact and may be deleted after delivery.
-3. When the model cannot read images, fall back to a structural review of the generated pages (bounds, overflow-prone long text, contrast, hierarchy, layout density) over multiple rounds, and state that image-based visual QA was skipped.
+   - Re-export the PPTX after fixes and run the offline layout check again. The QA images are intermediate files in the temporary directory, never part of the delivery.
+4. When neither check is available (no layout checker, and the user declined or the model cannot read images), fall back to a structural review of the generated pages (bounds, overflow-prone long text, contrast, hierarchy, layout density) over multiple rounds. Always state which checks were done and which were skipped.
 
 ### step5. PPT output and delivery
 1. Always produce a self-contained project directory. Keep the `.pptd` manifest and every referenced dependency together; never deliver a standalone manifest without its referenced files. Use this layout unless an existing project already has a valid equivalent structure:
