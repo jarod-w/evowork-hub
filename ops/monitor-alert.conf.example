@@ -1,0 +1,7 @@
+# Optional drop-in: /etc/systemd/system/evowork-hub-monitor.service.d/alert.conf
+# Install your notification handler unit first, then enable this drop-in.
+# The handler can read the latest versioned JSON event from:
+# journalctl -u evowork-hub-monitor.service -o cat --no-pager
+# No recipient, webhook, credentials or notification service is configured by default.
+[Unit]
+OnFailure=evowork-hub-notify@%n.service

@@ -1,0 +1,20 @@
+[Unit]
+Description=Verify public EvoWork Hub catalog freshness
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+DynamicUser=yes
+ExecStart=/usr/bin/node /opt/evowork-hub-monitor/monitor-index.mjs
+TimeoutStartSec=45
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+StandardOutput=journal
+StandardError=journal
+
+# Exit 1/2/3/4 means warning/critical/expired/unavailable. Do not mark these as success.
+# Route failed units to the operator's existing alerting service when configured.

@@ -14,7 +14,11 @@
     "test": "vitest run",
     "typecheck": "tsc -p tsconfig.json",
     "check": "tsc -p tsconfig.json && vitest run",
-    "release": "tsx pipeline/release.ts"
+    "release": "tsx pipeline/release.ts",
+    "renew-index": "tsx pipeline/renew-index.ts",
+    "monitor-index": "tsx pipeline/monitor-index.ts",
+    "build:monitor": "tsx pipeline/build-monitor.ts",
+    "schedule:renew": "tsx pipeline/install-renew-schedule.ts"
   },
   "devDependencies": {
     "@types/node": "^22.19.0",

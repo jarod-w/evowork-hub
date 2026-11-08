@@ -1,0 +1,11 @@
+[Unit]
+Description=Check EvoWork Hub catalog every hour
+
+[Timer]
+OnCalendar=hourly
+Persistent=true
+RandomizedDelaySec=60
+Unit=evowork-hub-monitor.service
+
+[Install]
+WantedBy=timers.target
