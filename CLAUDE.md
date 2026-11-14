@@ -4,7 +4,7 @@ EvoWork 插件 Hub 的源头仓库：上游清单 · 筛选管道 · 托管内�
 
 **设计的唯一真源**是 evowork 仓库的 [`docs/design/13-plugin-hub.md`](../evowork/docs/design/13-plugin-hub.md)（同一工作区里的 `../evowork`）。动手前先读它的 §3、§4、§7、§10。本文件只写「在这个仓库里必须遵守什么」，不复制设计。
 
-在这里工作时，evowork 的 CLAUDE.md **加载不到**：Claude Code 从工作目录往上找，而上一层是空的。所以 evowork 那边与本仓库相关的规则，都在下面写了一遍；**不要把 evowork 的 CLAUDE.md 整份复制过来**，两份会慢慢分叉。
+在这里工作时，evowork 的 CLAUDE.md **加载不到**（它是同级目录，不是上级）。上一级的 [`../CLAUDE.md`](../CLAUDE.md) 只是多根工作区的短路由，不含本仓的 H1–H10。和本仓库相关的规则都写在下面；**不要把 evowork 的 CLAUDE.md 整份复制过来**，两份会慢慢分叉。
 
 ---
 
