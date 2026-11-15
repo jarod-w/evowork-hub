@@ -20,7 +20,7 @@ EvoWork 插件 Hub 的源头仓库：上游清单 · 筛选管道 · 托管内�
 | H4 | **审计规则不复制**：从 evowork 的 `services/catalog` 引用（git 依赖钉提交）。本仓库里不许出现第二份审计规则 | 13 HUB-Q9=A；云端与客户端按规则版本比对结论（13 §5.3） |
 | H5 | 面向用户的文字（displayName / description / 改写后的说明）里**不出现 Codex / OpenAI / ChatGPT / Claude 字样** | evowork K5 |
 | H6 | stdio 连接器**只收包内自带的 JS / Python 源码**：不收原生二进制，启动命令里不许有 `npx` / `uvx` / `pipx run` 这类运行时拉包 | 13 HUB-Q6a=A |
-| H7 | 专家只收我们自己写的；开源子代理的转换是二期 | 13 HUB-Q10=A |
+| H7 | 专家收自写内容及许可明确、经审核的单人专家；专家团转换留待后续 | 13 HUB-Q10 |
 | H8 | **不接受第三方提交新条目**。问题反馈和下架请求可以接受 | 13 N1 / HUB-Q1 |
 | H9 | ChatGPT Apps（`.app.json`）任何形式都不收 | evowork K7 |
 | H10 | 许可白名单：MIT · Apache-2.0 · BSD-2/3-Clause · ISC · CC0-1.0 · CC-BY-4.0。**逐个条目判**，不只看仓库级许可；Proprietary、source-available、copyleft 不收 | 13 HUB-Q5=A |

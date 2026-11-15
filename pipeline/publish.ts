@@ -33,6 +33,7 @@ import { parse } from "yaml";
 
 import { HUB_ROOT, loadCatalog, loadHubProtocol } from "./evowork.ts";
 import { ONLINE_TTL_SEC } from "./publication.ts";
+import { EXPERT_MANIFEST, importExpert } from "./import-expert.ts";
 
 const OFFLINE_TTL_SEC = 180 * 24 * 3600;
 
@@ -74,8 +75,21 @@ export async function publish(input: PublishInput) {
     for (const id of readdirSync(base).sort()) {
       const dir = join(base, id);
       if (!statSync(dir).isDirectory()) continue;
-      const meta = readMeta(dir, kind, id);
-      const files = readFiles(dir).filter((f) => f.path !== "hub.json");
+      const importedExpert =
+        kind === "expert" && existsSync(join(dir, EXPERT_MANIFEST));
+      const baseMeta = readMeta(dir, kind, id, importedExpert);
+      const converted = importedExpert
+        ? importExpert(dir, id, baseMeta.license)
+        : undefined;
+      const meta = converted
+        ? {
+            ...baseMeta,
+            version: converted.version,
+            interface: converted.interface,
+          }
+        : baseMeta;
+      const files =
+        converted?.files ?? readFiles(dir).filter((f) => f.path !== "hub.json");
       const auditFiles = files.map((f) => ({
         relativePath: f.path,
         ...(/\.(md|json|py|mjs|cjs|js|ts|toml|txt|ya?ml|sh)$/i.test(f.path)
@@ -176,21 +190,29 @@ interface ItemMeta {
 }
 
 /** 每个条目目录里的 `hub.json`：版本、中文元数据、许可、是否进 prompt。不打进内容包。 */
-function readMeta(dir: string, kind: string, id: string): ItemMeta {
+function readMeta(
+  dir: string,
+  kind: string,
+  id: string,
+  importedExpert: boolean,
+): ItemMeta {
   const path = join(dir, "hub.json");
   if (!existsSync(path)) throw new Error(`${kind}:${id} 缺 hub.json`);
   const raw = JSON.parse(readFileSync(path, "utf8")) as Record<string, unknown>;
-  if (typeof raw.version !== "string")
+  if (!importedExpert && typeof raw.version !== "string")
     throw new Error(`${kind}:${id} 的 hub.json 缺 version`);
   return {
-    version: raw.version,
+    version: typeof raw.version === "string" ? raw.version : "",
     ...(typeof raw.minAppVersion === "string"
       ? { minAppVersion: raw.minAppVersion }
       : {}),
     defaultEnabled: raw.defaultEnabled !== false,
     promptVisible: raw.promptVisible !== false,
     interface: (raw.interface ?? {}) as Record<string, unknown>,
-    license: (raw.license ?? { spdx: "MIT" }) as Record<string, unknown>,
+    license: (raw.license ?? (importedExpert ? {} : { spdx: "MIT" })) as Record<
+      string,
+      unknown
+    >,
     ...(typeof raw.transport === "string" ? { transport: raw.transport } : {}),
     ...(typeof raw.publishedAt === "number"
       ? { publishedAt: raw.publishedAt }

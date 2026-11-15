@@ -1,0 +1,30 @@
+{
+  "name": "accessibility-auditor",
+  "version": "1.0.1-evowork.1",
+  "expertType": "agent",
+  "agentName": "accessibility-auditor",
+  "agents": [
+    "./agents/accessibility-auditor.md"
+  ],
+  "license": "MIT",
+  "displayName": {
+    "en": "Accessibility Auditor",
+    "zh": "无障碍审计师"
+  },
+  "displayDescription": {
+    "zh": "审查键盘导航、屏幕阅读器和界面对比度，给出有依据的改进建议。",
+    "en": "Review keyboard navigation, screen reader support, and contrast, and suggest fixes backed by evidence."
+  },
+  "categoryId": "产品质量",
+  "defaultInitPrompt": {
+    "zh": "请帮我检查一个界面的无障碍问题。"
+  },
+  "quickPrompts": [
+    {
+      "zh": "检查这段 HTML 的键盘导航和可访问名称。"
+    },
+    {
+      "zh": "根据现有测试结果制定无障碍改进方案。"
+    }
+  ]
+}

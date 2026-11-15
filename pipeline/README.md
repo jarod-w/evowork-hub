@@ -24,6 +24,14 @@ pnpm release --dry-run                            # 发版机：打包 + 签名 
 pnpm release                                      # 发版机：上传（先内容包、最后 index.json）并从线上取回验证
 ```
 
+## 收录 WorkBuddy 单人专家
+
+在 `content/experts/<id>/` 放经审核的 `.codebuddy-plugin/plugin.json`、清单指向的单一角色 Markdown、
+原始 `LICENSE`、`MODIFICATIONS.md` 及上游要求的 `NOTICE`。同目录的 `hub.json` 登记
+`license.spdx`、`license.upstream`、`license.commit` 和客户端最低版本。
+打包时从清单生成卡片和角色 TOML。需要额外技能、连接器或团队编排的清单会报错，需先完成对应适配。
+先在插件页核对安装确认和角色对话，再走签名发布。
+
 ## 发布（发版机）
 
 签名私钥与写入凭据**只在发版机上、仓库之外**（`~/.evowork-hub-keys/`，0600）：
