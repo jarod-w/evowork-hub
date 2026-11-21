@@ -2,8 +2,7 @@
 
 我们托管的条目，**一个条目一个目录**。
 
-当前收录 `skills/open-kimi-ppt`：Kimi 演示文稿（上游固定提交，EvoWork 本地导出适配版）。
-支持范围、依赖与修改记录见该条目的 `reference/evowork-local-export.md` 和 `MODIFICATIONS.md`。
+已收录的条目以各目录的 `hub.json` 为准。Kimi 演示文稿的支持范围见 `skills/open-kimi-ppt/reference/evowork-local-export.md`。
 
 ```
 content/

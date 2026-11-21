@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0-evowork.1",
+  "minAppVersion": "0.6.2",
+  "promptVisible": false,
+  "interface": {
+    "displayName": "概念讲解",
+    "description": "围绕当前项目里的一个概念讲解，并留下可以复习的术语和例子。",
+    "category": "效率"
+  },
+  "license": {
+    "spdx": "MIT",
+    "upstream": "https://github.com/mattpocock/skills",
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823",
+    "modified": true
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "transport": "http",
+  "url": "https://www.mergerinfo.com/api/mcp"
+}

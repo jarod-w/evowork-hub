@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0",
+  "minAppVersion": "0.6.2",
+  "promptVisible": false,
+  "transport": "http",
+  "interface": {
+    "displayName": "库卡产品咨询",
+    "description": "查询库卡公开的产品与技术说明。",
+    "category": "产品"
+  },
+  "license": {
+    "spdx": "MIT",
+    "upstream": "https://mcp.kukacenter.com/mcp",
+    "modified": false
+  }
+}

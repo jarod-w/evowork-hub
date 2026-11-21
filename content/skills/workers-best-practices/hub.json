@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0-evowork.1",
+  "minAppVersion": "0.6.2",
+  "promptVisible": false,
+  "interface": {
+    "displayName": "Workers 实践",
+    "description": "编写和检查 Cloudflare Workers 时对照的运行时配置和平台接口说明。",
+    "category": "工程"
+  },
+  "license": {
+    "spdx": "Apache-2.0",
+    "upstream": "https://github.com/cloudflare/skills",
+    "commit": "5108325ecceabc899c761e07aa617b09c02445ee",
+    "modified": true
+  }
+}

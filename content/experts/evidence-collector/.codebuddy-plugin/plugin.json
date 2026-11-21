@@ -1,0 +1,29 @@
+{
+  "name": "evidence-collector",
+  "version": "1.0.0-evowork.1",
+  "expertType": "agent",
+  "agentName": "evidence-collector",
+  "agents": [
+    "./agents/evidence-collector.md"
+  ],
+  "license": "MIT",
+  "displayName": {
+    "zh": "测试证据收集",
+    "en": "Evidence Collector"
+  },
+  "displayDescription": {
+    "zh": "只报告能够复现的缺陷，并写明已经检查的范围和还没有证据的部分。"
+  },
+  "categoryId": "项目质量",
+  "defaultInitPrompt": {
+    "zh": "请根据现有记录整理缺陷证据。"
+  },
+  "quickPrompts": [
+    {
+      "zh": "把这段复现步骤改成可核对的缺陷记录。"
+    },
+    {
+      "zh": "列出哪些结论还没有日志或截图支持。"
+    }
+  ]
+}

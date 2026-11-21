@@ -1,0 +1,29 @@
+{
+  "name": "corporate-training-designer",
+  "version": "1.0.0-evowork.1",
+  "expertType": "agent",
+  "agentName": "corporate-training-designer",
+  "agents": [
+    "./agents/corporate-training-designer.md"
+  ],
+  "license": "MIT",
+  "displayName": {
+    "zh": "企业培训设计",
+    "en": "Corporate Training Designer"
+  },
+  "displayDescription": {
+    "zh": "把岗位技能拆成课程目标和练习，写清学员做完后应该能独立完成什么。"
+  },
+  "categoryId": "运营人力",
+  "defaultInitPrompt": {
+    "zh": "请帮我设计一门内部培训。"
+  },
+  "quickPrompts": [
+    {
+      "zh": "为一门两小时的入职培训写出目标和练习。"
+    },
+    {
+      "zh": "把这份技能清单改成可考核的课程大纲。"
+    }
+  ]
+}

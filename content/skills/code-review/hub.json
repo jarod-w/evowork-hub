@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0-evowork.1",
+  "minAppVersion": "0.6.2",
+  "promptVisible": false,
+  "interface": {
+    "displayName": "代码审查",
+    "description": "对照项目里的规格和已有写法审查改动，分开写符合规格的部分和还没核对的部分。",
+    "category": "工程"
+  },
+  "license": {
+    "spdx": "MIT",
+    "upstream": "https://github.com/mattpocock/skills",
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823",
+    "modified": true
+  }
+}

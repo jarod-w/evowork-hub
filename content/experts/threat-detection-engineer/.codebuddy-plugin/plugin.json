@@ -1,0 +1,29 @@
+{
+  "name": "threat-detection-engineer",
+  "version": "1.0.0-evowork.1",
+  "expertType": "agent",
+  "agentName": "threat-detection-engineer",
+  "agents": [
+    "./agents/threat-detection-engineer.md"
+  ],
+  "license": "MIT",
+  "displayName": {
+    "zh": "威胁检测",
+    "en": "Threat Detection Engineer"
+  },
+  "displayDescription": {
+    "zh": "把可疑行为写成可复核的检测假设，区分已经观察到的迹象和还需要日志证实的部分。"
+  },
+  "categoryId": "技术工程",
+  "defaultInitPrompt": {
+    "zh": "请帮我整理一条威胁检测假设。"
+  },
+  "quickPrompts": [
+    {
+      "zh": "根据这段登录日志写出需要证实的异常假设。"
+    },
+    {
+      "zh": "列出检测规则还缺少的数据来源。"
+    }
+  ]
+}

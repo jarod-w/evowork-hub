@@ -1,0 +1,6 @@
+# 保险产品检索
+
+- 这是 EvoWork 编写的远程连接器记录，只包含公开的 MCP 地址，不含对方服务的代码或密钥。
+- 地址：https://hzc-prosearch.hzins.com/product-recommendation/mcp
+- 2026-11-21 在国内网络完成 initialize 和 tools/list，未代用户调用会读取私人数据的工具。
+- 安装后仍需用户审查并信任。服务端之后要求登录时，连接会失败并应显示原因。

@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0-evowork.1",
+  "minAppVersion": "0.6.2",
+  "promptVisible": false,
+  "interface": {
+    "displayName": "国家统计局数据",
+    "description": "查询国家统计局公开的经济、价格、人口和房价数据。",
+    "category": "数据"
+  },
+  "license": {
+    "spdx": "MIT",
+    "upstream": "https://github.com/aahl/skills",
+    "commit": "47edd621dff44253677d2ed14c223393ca020407",
+    "modified": true
+  }
+}

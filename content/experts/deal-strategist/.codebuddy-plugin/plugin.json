@@ -1,0 +1,29 @@
+{
+  "name": "deal-strategist",
+  "version": "1.0.0-evowork.1",
+  "expertType": "agent",
+  "agentName": "deal-strategist",
+  "agents": [
+    "./agents/deal-strategist.md"
+  ],
+  "license": "MIT",
+  "displayName": {
+    "zh": "交易策略",
+    "en": "Deal Strategist"
+  },
+  "displayDescription": {
+    "zh": "整理复杂交易的决策人、竞争差异和尚未确认的成交条件。"
+  },
+  "categoryId": "销售商务",
+  "defaultInitPrompt": {
+    "zh": "请帮我整理一笔复杂交易的推进策略。"
+  },
+  "quickPrompts": [
+    {
+      "zh": "列出这笔交易里还没确认的决策人和反对意见。"
+    },
+    {
+      "zh": "把竞争差异写成销售可以核对的说法。"
+    }
+  ]
+}

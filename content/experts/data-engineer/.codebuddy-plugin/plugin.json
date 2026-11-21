@@ -1,0 +1,29 @@
+{
+  "name": "data-engineer",
+  "version": "1.0.0-evowork.1",
+  "expertType": "agent",
+  "agentName": "data-engineer",
+  "agents": [
+    "./agents/data-engineer.md"
+  ],
+  "license": "MIT",
+  "displayName": {
+    "zh": "数据工程师",
+    "en": "Data Engineer"
+  },
+  "displayDescription": {
+    "zh": "设计可核对的数据管道和表结构，写清来源、失败时怎么重跑，以及哪些字段还没验证。"
+  },
+  "categoryId": "数据智能",
+  "defaultInitPrompt": {
+    "zh": "请帮我设计一条数据同步管道。"
+  },
+  "quickPrompts": [
+    {
+      "zh": "为每天同步的订单表写出字段、主键和失败重跑方式。"
+    },
+    {
+      "zh": "检查这份转换说明里哪些步骤没有对账。"
+    }
+  ]
+}

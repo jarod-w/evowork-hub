@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0-evowork.1",
+  "minAppVersion": "0.6.2",
+  "promptVisible": false,
+  "interface": {
+    "displayName": "网页性能",
+    "description": "根据已有测量结果检查页面加载和交互性能，不把未测量的项写成已优化。",
+    "category": "工程"
+  },
+  "license": {
+    "spdx": "Apache-2.0",
+    "upstream": "https://github.com/cloudflare/skills",
+    "commit": "5108325ecceabc899c761e07aa617b09c02445ee",
+    "modified": true
+  }
+}

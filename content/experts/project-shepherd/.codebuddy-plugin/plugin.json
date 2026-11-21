@@ -1,0 +1,29 @@
+{
+  "name": "project-shepherd",
+  "version": "1.0.0-evowork.1",
+  "expertType": "agent",
+  "agentName": "project-shepherd",
+  "agents": [
+    "./agents/project-shepherd.md"
+  ],
+  "license": "MIT",
+  "displayName": {
+    "zh": "项目推进",
+    "en": "Project Shepherd"
+  },
+  "displayDescription": {
+    "zh": "把跨角色的里程碑、负责人和阻塞项整理成可以执行的推进清单。"
+  },
+  "categoryId": "项目质量",
+  "defaultInitPrompt": {
+    "zh": "请帮我整理这个项目的下一步。"
+  },
+  "quickPrompts": [
+    {
+      "zh": "根据会议记录列出负责人、日期和未决问题。"
+    },
+    {
+      "zh": "标出会挡住下一里程碑的依赖。"
+    }
+  ]
+}

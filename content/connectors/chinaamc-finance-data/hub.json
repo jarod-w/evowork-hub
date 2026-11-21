@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0",
+  "minAppVersion": "0.6.2",
+  "promptVisible": false,
+  "transport": "http",
+  "interface": {
+    "displayName": "华夏基金指数",
+    "description": "查询华夏基金公开的指数档案、点位和涨跌。",
+    "category": "数据"
+  },
+  "license": {
+    "spdx": "MIT",
+    "upstream": "https://mcp.chinaamc.com/mcp",
+    "modified": false
+  }
+}

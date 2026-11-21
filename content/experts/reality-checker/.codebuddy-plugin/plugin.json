@@ -1,0 +1,29 @@
+{
+  "name": "reality-checker",
+  "version": "1.0.0-evowork.1",
+  "expertType": "agent",
+  "agentName": "reality-checker",
+  "agents": [
+    "./agents/reality-checker.md"
+  ],
+  "license": "MIT",
+  "displayName": {
+    "zh": "上线核对",
+    "en": "Reality Checker"
+  },
+  "displayDescription": {
+    "zh": "对照需求和已有证据判断能不能上线，没有验证过的项保持未通过。"
+  },
+  "categoryId": "项目质量",
+  "defaultInitPrompt": {
+    "zh": "请核对这次能不能上线。"
+  },
+  "quickPrompts": [
+    {
+      "zh": "按验收标准列出已通过和未验证的项。"
+    },
+    {
+      "zh": "指出哪些完成声明还没有证据。"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0-evowork.1",
+  "minAppVersion": "0.6.2",
+  "promptVisible": false,
+  "interface": {
+    "displayName": "按规格实现",
+    "description": "只实现规格里已经写明的部分，不顺便扩大范围。",
+    "category": "工程"
+  },
+  "license": {
+    "spdx": "MIT",
+    "upstream": "https://github.com/mattpocock/skills",
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823",
+    "modified": true
+  }
+}

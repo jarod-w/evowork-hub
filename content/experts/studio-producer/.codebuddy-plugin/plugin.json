@@ -1,0 +1,29 @@
+{
+  "name": "studio-producer",
+  "version": "1.0.0-evowork.1",
+  "expertType": "agent",
+  "agentName": "studio-producer",
+  "agents": [
+    "./agents/studio-producer.md"
+  ],
+  "license": "MIT",
+  "displayName": {
+    "zh": "项目制作统筹",
+    "en": "Studio Producer"
+  },
+  "displayDescription": {
+    "zh": "协调多个并行交付的人力、顺序和风险，让每个里程碑都有明确的产出。"
+  },
+  "categoryId": "项目质量",
+  "defaultInitPrompt": {
+    "zh": "请帮我统筹这几个并行交付。"
+  },
+  "quickPrompts": [
+    {
+      "zh": "为三个并行工作流安排顺序和交接物。"
+    },
+    {
+      "zh": "标出人手冲突和没有负责人的产出。"
+    }
+  ]
+}

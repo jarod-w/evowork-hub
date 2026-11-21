@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0-evowork.1",
+  "minAppVersion": "0.6.2",
+  "promptVisible": false,
+  "interface": {
+    "displayName": "调研报告",
+    "description": "把已经收集的调研记录整理成报告，不确定的字段留空并标明。",
+    "category": "研究"
+  },
+  "license": {
+    "spdx": "MIT",
+    "upstream": "https://github.com/Weizhena/Deep-Research-skills",
+    "commit": "6ce38f60e3f8b22502c29873f96503a4e0c5addb",
+    "modified": true
+  }
+}

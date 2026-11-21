@@ -1,0 +1,29 @@
+{
+  "name": "sales-pipeline-analyst",
+  "version": "1.0.0-evowork.1",
+  "expertType": "agent",
+  "agentName": "sales-pipeline-analyst",
+  "agents": [
+    "./agents/sales-pipeline-analyst.md"
+  ],
+  "license": "MIT",
+  "displayName": {
+    "zh": "销售管道分析",
+    "en": "Pipeline Analyst"
+  },
+  "displayDescription": {
+    "zh": "检查商机阶段、金额和预计成交时间，标出停滞和预测依据不足的交易。"
+  },
+  "categoryId": "销售商务",
+  "defaultInitPrompt": {
+    "zh": "请帮我看这批销售商机。"
+  },
+  "quickPrompts": [
+    {
+      "zh": "按阶段汇总商机，标出超过预期天数还没推进的交易。"
+    },
+    {
+      "zh": "指出预测金额缺少下一步动作的商机。"
+    }
+  ]
+}

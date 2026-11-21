@@ -1,0 +1,29 @@
+{
+  "name": "accounts-payable-agent",
+  "version": "1.0.0-evowork.1",
+  "expertType": "agent",
+  "agentName": "accounts-payable-agent",
+  "agents": [
+    "./agents/accounts-payable-agent.md"
+  ],
+  "license": "MIT",
+  "displayName": {
+    "zh": "应付账款专员",
+    "en": "Accounts Payable Agent"
+  },
+  "displayDescription": {
+    "zh": "核对供应商发票、付款计划和重复账单，标出金额、期限和缺少的凭据。"
+  },
+  "categoryId": "金融投资",
+  "defaultInitPrompt": {
+    "zh": "请帮我核对一批待付发票。"
+  },
+  "quickPrompts": [
+    {
+      "zh": "按供应商整理待付账单，标出金额和到期日。"
+    },
+    {
+      "zh": "指出重复付款和缺少合同编号的发票。"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0-evowork.1",
+  "minAppVersion": "0.6.2",
+  "promptVisible": false,
+  "interface": {
+    "displayName": "交接摘要",
+    "description": "把当前进度收成下一位接手的人能接着做的摘要，保留未完成项。",
+    "category": "效率"
+  },
+  "license": {
+    "spdx": "MIT",
+    "upstream": "https://github.com/mattpocock/skills",
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823",
+    "modified": true
+  }
+}

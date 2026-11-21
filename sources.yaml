@@ -25,6 +25,55 @@ sources:
       content/skills/open-kimi-ppt 是适配后的托管版本：依赖随包、办公组件本地转 PPTX、专用浏览器仅做图片校验。
       已过 G2–G4、禁用用户包测试、本地 PPTX/原生元素回读和真实 Chrome 图片导出；高级能力限制见适配说明。
 
+  - id: mattpocock-skills
+    repo: https://github.com/mattpocock/skills
+    commit: abeeaf95660ba9e8b7c753eb38f441ca707a8823
+    include:
+      - skills/engineering/tdd/**
+      - skills/engineering/diagnosing-bugs/**
+      - skills/engineering/code-review/**
+      - skills/engineering/to-spec/**
+      - skills/engineering/triage/**
+      - skills/engineering/implement/**
+      - skills/engineering/domain-modeling/**
+      - skills/productivity/handoff/**
+      - skills/productivity/grill-me/**
+      - skills/productivity/teach/**
+    kinds: [skill]
+    note: >-
+      仓库级 MIT。只收录说明型技能，不收带特定宿主名称的条目。
+      content/skills 下对应目录是托管版本：中文展示文案，默认不进提示词。
+
+  - id: cloudflare-skills
+    repo: https://github.com/cloudflare/skills
+    commit: 5108325ecceabc899c761e07aa617b09c02445ee
+    include:
+      - skills/workers-best-practices/**
+      - skills/web-perf/**
+    kinds: [skill]
+    note: 仓库级 Apache-2.0。只收录这两份说明，上游没有单独的 NOTICE。
+
+  - id: aahl-skills
+    repo: https://github.com/aahl/skills
+    commit: 47edd621dff44253677d2ed14c223393ca020407
+    include: ["skills/cn-stats/**"]
+    kinds: [skill]
+    note: 仓库级 MIT。国家统计局公开接口查询说明，不带密钥。
+
+  - id: ai-marketing-skills
+    repo: https://github.com/ericosiu/ai-marketing-skills
+    commit: c715f900e3a7c1f4274976ca851849d9a7c3fe55
+    include: ["content-eval/**"]
+    kinds: [skill]
+    note: 仓库级 MIT。只收录内容评估说明，README 里的宿主名称已改成通用说法。
+
+  - id: deep-research-skills
+    repo: https://github.com/Weizhena/Deep-Research-skills
+    commit: 6ce38f60e3f8b22502c29873f96503a4e0c5addb
+    include: ["skills/research-zh/research-report/**"]
+    kinds: [skill]
+    note: 仓库级 MIT。只收录中文调研报告整理说明，去掉其他宿主的工具名单。
+
 # - id: anthropics-skills
 #   repo: https://github.com/anthropics/skills
 #   commit: <完整提交号>

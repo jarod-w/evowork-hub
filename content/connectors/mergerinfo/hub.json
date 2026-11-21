@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0",
+  "minAppVersion": "0.6.2",
+  "promptVisible": false,
+  "transport": "http",
+  "interface": {
+    "displayName": "海外出售线索",
+    "description": "查询公开更新的海外待售标的。",
+    "category": "数据"
+  },
+  "license": {
+    "spdx": "MIT",
+    "upstream": "https://www.mergerinfo.com/api/mcp",
+    "modified": false
+  }
+}

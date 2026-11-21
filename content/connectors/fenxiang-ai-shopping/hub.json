@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0",
+  "minAppVersion": "0.6.2",
+  "promptVisible": false,
+  "transport": "http",
+  "interface": {
+    "displayName": "商品对比",
+    "description": "比较多个商品链接并返回对照结果。",
+    "category": "购物"
+  },
+  "license": {
+    "spdx": "MIT",
+    "upstream": "https://api.fenxianglife.com/njia/mcp",
+    "modified": false
+  }
+}

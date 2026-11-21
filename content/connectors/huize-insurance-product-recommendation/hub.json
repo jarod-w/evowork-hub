@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0",
+  "minAppVersion": "0.6.2",
+  "promptVisible": false,
+  "transport": "http",
+  "interface": {
+    "displayName": "保险产品检索",
+    "description": "按条件检索慧择公开的保险产品说明。",
+    "category": "金融"
+  },
+  "license": {
+    "spdx": "MIT",
+    "upstream": "https://hzc-prosearch.hzins.com/product-recommendation/mcp",
+    "modified": false
+  }
+}
