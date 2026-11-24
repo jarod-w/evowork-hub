@@ -36,6 +36,10 @@ sources:
       - skills/engineering/triage/**
       - skills/engineering/implement/**
       - skills/engineering/domain-modeling/**
+      - skills/engineering/codebase-design/**
+      - skills/engineering/prototype/**
+      - skills/engineering/to-tickets/**
+      - skills/engineering/improve-codebase-architecture/**
       - skills/productivity/handoff/**
       - skills/productivity/grill-me/**
       - skills/productivity/teach/**
@@ -43,6 +47,7 @@ sources:
     note: >-
       仓库级 MIT。只收录说明型技能，不收带特定宿主名称的条目。
       content/skills 下对应目录是托管版本：中文展示文案，默认不进提示词。
+      拆成任务不再指向上游的安装向导；架构加深改为调用已收录的 grill-me。
 
   - id: cloudflare-skills
     repo: https://github.com/cloudflare/skills
@@ -70,9 +75,28 @@ sources:
   - id: deep-research-skills
     repo: https://github.com/Weizhena/Deep-Research-skills
     commit: 6ce38f60e3f8b22502c29873f96503a4e0c5addb
-    include: ["skills/research-zh/research-report/**"]
+    include:
+      - skills/research-zh/research-report/**
+      - skills/research-zh/research/SKILL.md
     kinds: [skill]
-    note: 仓库级 MIT。只收录中文调研报告整理说明，去掉其他宿主的工具名单。
+    note: >-
+      仓库级 MIT。收录中文调研提纲和调研报告。提纲去掉其他宿主的工具名单，
+      不收录依赖 PyYAML 的 validate_json.py。
+
+  - id: academic-citation-manager
+    repo: https://github.com/YouStudyeveryday/academic-citation-manager
+    commit: 372286ce1acae58bc0c6cd4270282ff07ef95ea7
+    include:
+      - SKILL.md
+      - academic_citation_skill.py
+      - batch_import.py
+      - citation_styles.json
+      - crossref_config.json
+      - reference_database.json
+    kinds: [skill]
+    note: >-
+      仓库根 LICENSE 是 Apache-2.0，上游没有 NOTICE。SKILL.md frontmatter 写了 MIT，
+      与许可证正文不一致，托管版本以 LICENSE 为准。HTTP 改为标准库，不收录要求安装第三方包的说明。
 
 # - id: anthropics-skills
 #   repo: https://github.com/anthropics/skills

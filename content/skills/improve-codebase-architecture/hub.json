@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0-evowork.1",
+  "minAppVersion": "0.6.2",
+  "promptVisible": false,
+  "interface": {
+    "displayName": "架构加深",
+    "description": "找出过浅的模块，做成一份本地报告，再逐项讨论怎么加深。",
+    "category": "工程"
+  },
+  "license": {
+    "spdx": "MIT",
+    "upstream": "https://github.com/mattpocock/skills",
+    "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823",
+    "modified": true
+  }
+}

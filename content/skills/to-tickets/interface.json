@@ -1,0 +1,5 @@
+{
+  "displayName": "拆成任务",
+  "description": "把方案拆成可独立验证的小任务，并写明先后依赖。",
+  "category": "工程"
+}
