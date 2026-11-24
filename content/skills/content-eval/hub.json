@@ -1,7 +1,7 @@
 {
-  "version": "1.0.0-evowork.1",
+  "version": "1.0.0-evowork.2",
   "minAppVersion": "0.6.2",
-  "promptVisible": false,
+  "promptVisible": true,
   "interface": {
     "displayName": "内容评估",
     "description": "按既定栏目和口径给内容选题打分，缺少材料的项保持未评分。",

@@ -144,6 +144,40 @@ describe("G7 发布与离线签名", () => {
     ).rejects.toThrow(/旧/);
   });
 
+  it("进目录的技能超出 128K 窗口 2% 的预算 → 拒绝；改成按需层就能发", async () => {
+    const write = (promptVisible: boolean) => {
+      for (let i = 0; i < 12; i += 1) {
+        const id = `wide-${i}`;
+        const dir = join(tmp, "content", "skills", id);
+        mkdirSync(dir, { recursive: true });
+        writeFileSync(
+          join(dir, "SKILL.md"),
+          `---\nname: ${id}\ndescription: ${"x".repeat(1000)}\n---\n只读说明\n`,
+        );
+        writeFileSync(
+          join(dir, "hub.json"),
+          JSON.stringify({
+            version: "1.0.0",
+            promptVisible,
+            interface: { displayName: id, description: "d", category: "工程" },
+            license: { spdx: "MIT" },
+          }),
+        );
+      }
+    };
+    const base = {
+      contentDir: join(tmp, "content"),
+      outDir: join(tmp, "dist"),
+      sequence: 1,
+      now: 1_800_000_000,
+      bundledSkillsDir: join(tmp, "no-bundled"),
+    };
+    write(true);
+    await expect(publish(base)).rejects.toThrow(/prompt 预算/);
+    write(false);
+    await expect(publish(base)).resolves.toMatchObject({ items: 12 });
+  });
+
   it("同版本重新发布保留条目首次发布时间，避免目录维护被显示成新上架", async () => {
     skill("minutes", "只读说明");
     const outDir = join(tmp, "dist");

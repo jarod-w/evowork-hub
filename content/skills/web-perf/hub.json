@@ -1,7 +1,7 @@
 {
-  "version": "1.0.0-evowork.1",
+  "version": "1.0.0-evowork.2",
   "minAppVersion": "0.6.2",
-  "promptVisible": false,
+  "promptVisible": true,
   "interface": {
     "displayName": "网页性能",
     "description": "根据已有测量结果检查页面加载和交互性能，不把未测量的项写成已优化。",

@@ -1,7 +1,7 @@
 # 文献引用的来源与改动
 
 - 取自 [https://github.com/YouStudyeveryday/academic-citation-manager](https://github.com/YouStudyeveryday/academic-citation-manager/tree/372286ce1acae58bc0c6cd4270282ff07ef95ea7) 的固定提交。仓库根 `LICENSE` 是 Apache-2.0，上游没有 NOTICE。`SKILL.md` frontmatter 写了 MIT，与许可证正文不一致，托管版本以 `LICENSE` 为准，并去掉了这条 frontmatter。
-- 展示名称、简介和分类改为中文，写入 `interface.json`。默认不进入提示词目录。
+- 展示名称、简介和分类改为中文，写入 `interface.json`。名称和简介进入提示词目录，正文在选用时才加载（1.0.0-evowork.2 起）。
 - 去掉只在其他宿主生效的 frontmatter：homepage、user-invocable、version、tags、author、license。
 - `academic_citation_skill.py` 的 HTTP 从第三方库改为 Python 标准库 `urllib`。办公运行时没有那个库，不在安装时拉包。请求地址仍是 `api.crossref.org` 和 `openlibrary.org`。
 - 同一文件里三处作者名单的 f-string 写了非法转义，原文件无法被 Python 解析。改成普通引号后才能运行。

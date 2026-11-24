@@ -24,6 +24,8 @@ pnpm release --dry-run                            # 发版机：打包 + 签名 
 pnpm release                                      # 发版机：上传（先内容包、最后 index.json）并从线上取回验证
 ```
 
+`publish.ts` 会把随包技能和 `promptVisible: true` 的 Hub 技能放在一起，按客户端同一套口径计算名称、简介和路径的成本。超过 128K 窗口的 2% 就让发布失败。会写文件、接管流程，或名字容易和普通请求撞上的技能，放在按需层（`promptVisible: false`）。改了 `promptVisible` 要升版本号，已安装的副本才会重装并更新按需标记。
+
 ## 收录 WorkBuddy 单人专家
 
 在 `content/experts/<id>/` 放经审核的 `.codebuddy-plugin/plugin.json`、清单指向的单一角色 Markdown、

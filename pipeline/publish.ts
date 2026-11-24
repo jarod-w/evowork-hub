@@ -31,11 +31,24 @@ import { dirname, join, relative, sep } from "node:path";
 
 import { parse } from "yaml";
 
-import { HUB_ROOT, loadCatalog, loadHubProtocol } from "./evowork.ts";
+import {
+  evoworkDir,
+  HUB_ROOT,
+  loadCatalog,
+  loadHubProtocol,
+} from "./evowork.ts";
 import { ONLINE_TTL_SEC } from "./publication.ts";
 import { EXPERT_MANIFEST, importExpert } from "./import-expert.ts";
 
 const OFFLINE_TTL_SEC = 180 * 24 * 3600;
+
+/**
+ * 核心层预算（13 §6）：按支持的最小上下文窗口算，和客户端 `HUB_MIN_CONTEXT_WINDOW` 一致。
+ * 路径按安装后的位置估：随包技能在应用包里，Hub 技能在内核家目录里（路径本身约占三成成本）。
+ */
+const MIN_CONTEXT_WINDOW = 128_000;
+const BUNDLED_SKILL_PATH = "/Applications/EvoWork.app/Contents/Resources/plugins/skills";
+const HUB_SKILL_PATH = "/Users/evowork-user/.evowork/kernel/skills";
 
 export interface PublishInput {
   readonly contentDir: string;
@@ -55,6 +68,8 @@ export interface PublishInput {
       }
     | undefined;
   readonly upstreamFile?: string | undefined;
+  /** 随包技能目录，计入核心层预算。缺省为 evowork 签出的 `plugins/skills`。 */
+  readonly bundledSkillsDir?: string | undefined;
 }
 
 export async function publish(input: PublishInput) {
@@ -69,6 +84,8 @@ export async function publish(input: PublishInput) {
     );
   }
   const items: unknown[] = [];
+  const promptCatalog: { name: string; description: string; path: string }[] =
+    [];
   for (const kind of ["skill", "expert", "connector"] as const) {
     const base = join(input.contentDir, `${kind}s`);
     if (!existsSync(base)) continue;
@@ -112,6 +129,17 @@ export async function publish(input: PublishInput) {
           `${kind}:${id} 的版本 ${meta.version} 比已发布的 ${prev.version} 旧`,
         );
       }
+      if (kind === "skill" && meta.promptVisible) {
+        const skillMd = files.find((f) => f.path === "SKILL.md");
+        const fm = catalog.parseFrontmatter(
+          skillMd ? Buffer.from(skillMd.bytes).toString("utf8") : "",
+        );
+        promptCatalog.push({
+          name: fm.name,
+          description: fm.description,
+          path: `${HUB_SKILL_PATH}/${id}/SKILL.md`,
+        });
+      }
       const archive = hub.packTarGz(files);
       const path = `pkgs/${kind}/${id}/${meta.version}.tar.gz`;
       const dest = join(input.outDir, "v1", "evowork", path);
@@ -146,6 +174,11 @@ export async function publish(input: PublishInput) {
       });
     }
   }
+  checkPromptBudget(
+    catalog,
+    promptCatalog,
+    input.bundledSkillsDir ?? join(evoworkDir(), "plugins", "skills"),
+  );
   items.push(
     ...readUpstream(input.upstreamFile ?? join(HUB_ROOT, "upstream.yaml")),
   );
@@ -218,6 +251,39 @@ function readMeta(
       ? { publishedAt: raw.publishedAt }
       : {}),
   };
+}
+
+/**
+ * 核心层（`promptVisible: true`）加上随包技能，名称 + 描述 + 路径的成本不能超过最小窗口的 2%。
+ * 超了在用户那边就是截断描述、漏掉技能，所以在这里让发布失败。
+ */
+function checkPromptBudget(
+  catalog: Awaited<ReturnType<typeof loadCatalog>>,
+  hubSkills: readonly { name: string; description: string; path: string }[],
+  bundledDir: string,
+): void {
+  const bundled = existsSync(bundledDir)
+    ? readdirSync(bundledDir)
+        .sort()
+        .filter((id) => existsSync(join(bundledDir, id, "SKILL.md")))
+        .map((id) => {
+          const fm = catalog.parseFrontmatter(
+            readFileSync(join(bundledDir, id, "SKILL.md"), "utf8"),
+          );
+          return {
+            name: fm.name,
+            description: fm.description,
+            path: `${BUNDLED_SKILL_PATH}/${id}/SKILL.md`,
+          };
+        })
+    : [];
+  const used = catalog.skillCatalogCost([...bundled, ...hubSkills]);
+  const budget = catalog.skillCatalogBudget(MIN_CONTEXT_WINDOW);
+  if (used > budget) {
+    throw new Error(
+      `核心层超出 prompt 预算：随包 ${bundled.length} 个 + 进目录的 Hub 技能 ${hubSkills.length} 个，约 ${used} token，上限 ${budget}（128K 窗口的 2%）。把一部分改成 promptVisible: false`,
+    );
+  }
 }
 
 function readFiles(dir: string): { path: string; bytes: Uint8Array }[] {

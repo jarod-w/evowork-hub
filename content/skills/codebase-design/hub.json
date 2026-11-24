@@ -1,7 +1,7 @@
 {
-  "version": "1.0.0-evowork.1",
+  "version": "1.0.0-evowork.2",
   "minAppVersion": "0.6.2",
-  "promptVisible": false,
+  "promptVisible": true,
   "interface": {
     "displayName": "模块设计",
     "description": "用同一套说法设计模块的接口、接缝和可测试性。",

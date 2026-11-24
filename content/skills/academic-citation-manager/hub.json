@@ -1,7 +1,7 @@
 {
-  "version": "1.0.0-evowork.1",
+  "version": "1.0.0-evowork.2",
   "minAppVersion": "0.6.2",
-  "promptVisible": false,
+  "promptVisible": true,
   "interface": {
     "displayName": "文献引用",
     "description": "按 GB/T 7714 等格式整理参考文献，并用公开接口核对 DOI 和 ISBN。",

@@ -1,7 +1,7 @@
 {
-  "version": "1.0.0-evowork.1",
+  "version": "1.0.0-evowork.2",
   "minAppVersion": "0.6.2",
-  "promptVisible": false,
+  "promptVisible": true,
   "interface": {
     "displayName": "国家统计局数据",
     "description": "查询国家统计局公开的经济、价格、人口和房价数据。",
